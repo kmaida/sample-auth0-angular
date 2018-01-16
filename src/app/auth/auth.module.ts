@@ -1,5 +1,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 // Providers
 import { AuthService } from './auth.service';
 import { TokenInterceptorService } from './token-interceptor.service';
@@ -7,7 +8,8 @@ import { AuthGuard } from './auth.guard';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
   declarations: []
 })
@@ -17,8 +19,12 @@ export class AuthModule {
       ngModule: AuthModule,
       providers: [
         AuthService,
-        TokenInterceptorService,
-        AuthGuard
+        AuthGuard,
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: TokenInterceptorService,
+          multi: true
+        }
       ]
     };
 }
