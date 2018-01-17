@@ -100,7 +100,11 @@ export class AuthService {
     this.router.navigate([localStorage.getItem('auth_redirect')]);
   }
 
-  get checkAdmin(): boolean {
+  get isAdmin(): boolean {
+    // If no user profile, return false
+    if (!this.userProfile) {
+      return false;
+    }
     // Check if the user has admin role
     const roles = this.userProfile[environment.auth.namespace] || [];
     return roles.indexOf('admin') > -1;

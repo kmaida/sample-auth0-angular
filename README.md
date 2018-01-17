@@ -33,7 +33,51 @@ $ ng g service auth/token-interceptor --no-spec
 
 ## Auth0 Setup
 
-## Auth0 Rule
+## Auth0 Rules
+
+### Set Admin Role for Me
+
+```js
+function (user, context, callback) {
+  user.app_metadata = user.app_metadata || {};
+  // You can add a Role based on what you want
+  // In this case I check domain
+  var addRolesToUser = function(user, cb) {
+    if (user.email && user.email === 'kim.maida@auth0.com' || user.email && user.email === 'yi.mihi@gmail.com') {
+      cb(null, ['admin']);
+    } else {
+      cb(null, ['user']);
+    }
+  };
+
+  addRolesToUser(user, function(err, roles) {
+    if (err) {
+      callback(err);
+    } else {
+      user.app_metadata.roles = roles;
+      auth0.users.updateAppMetadata(user.user_id, user.app_metadata)
+        .then(function(){
+          callback(null, user, context);
+        })
+        .catch(function(err){
+          callback(err);
+        });
+    }
+  });
+}
+```
+
+### Add User Role to Tokens
+
+```js
+function (user, context, callback) {
+  var namespace = 'http://myapp.com/roles';
+  var userRoles = user.app_metadata.roles;
+  context.idToken[namespace] = userRoles;
+  context.accessToken[namespace] = userRoles;
+  callback(null, user, context);
+}
+```
 
 
 

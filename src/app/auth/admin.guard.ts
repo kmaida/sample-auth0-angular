@@ -14,7 +14,7 @@ export class AdminGuard implements CanLoad {
   canLoad(route: Route): boolean {
     const url = `/${route.path}`;
 
-    if (this.auth.tokenValid && this.auth.checkAdmin) {
+    if (this.auth.tokenValid && this.auth.isAdmin) {
       // Route can load if user is logged in and is an admin
       return true;
     } else if (!this.auth.tokenValid) {
