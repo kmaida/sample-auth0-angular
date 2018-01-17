@@ -9,7 +9,6 @@ import {
 } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { Observable } from 'rxjs/Observable';
-// Pipeable operators
 import { catchError } from 'rxjs/operators';
 
 @Injectable()
@@ -32,7 +31,7 @@ export class TokenInterceptorService implements HttpInterceptor {
   private _catchError(error, caught): Observable<any> {
     console.log('Error occurred:', error);
     if (error.status === 401) {
-      // this.auth.login();
+      this.auth.login();
     }
     return Observable.throw(error);
   }

@@ -10,6 +10,7 @@ export const environment = {
     domain: '{Auth0_Domain}' // e.g., 'you.auth0.com',
     redirect: 'http://localhost:4200/callback',
     audience: '{Auth0_API_Audience}', // e.g., 'http://localhost:3000/api/'
-    scope: 'openid profile email'
+    scope: 'openid profile email',
+    namespace: 'http://myapp.com/roles'
   }
 };

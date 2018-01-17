@@ -8,7 +8,8 @@ import { CallbackComponent } from './pages/callback.component';
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
+    pathMatch: 'full'
   },
   {
     path: 'callback',
@@ -17,10 +18,7 @@ const routes: Routes = [
   {
     path: 'admin',
     loadChildren: './pages/admin/admin.module#AdminModule',
-    canLoad: [
-      AuthGuard,
-      AdminGuard
-    ]
+    canLoad: [AdminGuard]
   }
 ];
 
