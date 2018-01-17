@@ -1,27 +1,27 @@
-# Auth0App
+# Auth0 Angular Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.4.
+## Angular App Setup
 
-## Development server
+```bash
+$ ng new auth0-app --routing --skip-tests
+$ cd auth0-app
+$ npm install auth0-js@latest --save
+$ ng g component pages/callback --is --it --flat --no-spec
+$ ng g component shared/header --is --no-spec
+$ ng g service shared/api --no-spec
+$ ng g component pages/home --is --no-spec
+$ ng g module pages/admin --routing --no-spec
+$ ng g component pages/admin/admin --is --export=true --no-spec
+$ ng g module auth
+$ ng g service auth/auth --no-spec
+$ ng g guard auth/auth --no-spec
+$ ng g guard auth/admin --no-spec
+$ ng g service auth/token-interceptor --no-spec
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Auth0 Setup
 
-## Code scaffolding
+## Auth0 Rule
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

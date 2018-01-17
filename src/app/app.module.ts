@@ -8,11 +8,18 @@ import { AppComponent } from './app.component';
 
 // Import authentication module
 import { AuthModule } from './auth/auth.module';
+// Import page components
+import { CallbackComponent } from './pages/callback.component';
+import { HomeComponent } from './pages/home/home.component';
+import { HeaderComponent } from './shared/header/header.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CallbackComponent,
+    HomeComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
