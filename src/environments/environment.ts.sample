@@ -11,6 +11,6 @@ export const environment = {
     redirect: 'http://localhost:4200/callback',
     audience: '{Auth0_API_Audience}', // e.g., 'http://localhost:3000/api/'
     scope: 'openid profile email',
-    namespace: 'http://myapp.com/roles'
+    namespace: '{Auth0_Rules_Roles_Namespace}' // e.g., 'http://myapp.com/roles'
   }
 };
