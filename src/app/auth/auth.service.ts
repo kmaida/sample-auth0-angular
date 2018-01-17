@@ -7,9 +7,12 @@ import * as auth0 from 'auth0-js';
 // Handle observables
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
+import { mergeMap } from 'rxjs/operators';
+// @TODO: using import { of } from 'rxjs/observable/of' works but the usage throws errors
+// @TODO: same case for timer
+// This should supposedly be fixed in RxJS 6
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/timer';
-import { mergeMap } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {

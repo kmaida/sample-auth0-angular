@@ -12,6 +12,7 @@ import { AuthModule } from './auth/auth.module';
 import { CallbackComponent } from './pages/callback.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './shared/header/header.component';
+import { LoadingComponent } from './shared/loading.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { HeaderComponent } from './shared/header/header.component';
     AppComponent,
     CallbackComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
