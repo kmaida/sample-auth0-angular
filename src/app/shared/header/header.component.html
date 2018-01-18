@@ -26,8 +26,10 @@
         (click)="auth.login()">Log In</button>
       <!-- Authenticated: show username and logout button -->
       <span *ngIf="auth.loggedIn">
-        <img [src]="auth.userProfile.picture">
-        <small>{{ auth.userProfile.name }}</small>
+        <a routerLink="/profile" class="profile-link">
+          <img [src]="auth.userProfile.picture">
+          <small>{{ auth.userProfile.name }}</small>
+        </a>
         <button
           class="btn btn-danger btn-sm"
           (click)="auth.logout()">Log Out</button>

@@ -15,6 +15,12 @@ import { AuthService } from '../../auth/auth.service';
     .active {
       font-weight: bold;
     }
+    .profile-link {
+      color: inherit;
+    }
+    .profile-link:hover {
+      text-decoration: none;
+    }
   `]
 })
 export class HeaderComponent implements OnInit {

@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor="let key of profileArray">
+    <strong>{{ key }}:</strong> <code>{{ auth.userProfile[key] | json }}</code>
+  </li>
+</ul>

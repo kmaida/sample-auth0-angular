@@ -13,6 +13,7 @@ import { CallbackComponent } from './pages/callback.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { LoadingComponent } from './shared/loading.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { LoadingComponent } from './shared/loading.component';
     CallbackComponent,
     HomeComponent,
     HeaderComponent,
-    LoadingComponent
+    LoadingComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
