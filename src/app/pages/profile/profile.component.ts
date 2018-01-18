@@ -7,14 +7,13 @@ import { AuthService } from '../../auth/auth.service';
   styles: []
 })
 export class ProfileComponent implements OnInit {
-  profileArray: {[key: string]: any};
+  profileKeys: {[key: string]: any};
 
   constructor(public auth: AuthService) {
-    this.profileArray = this.profileArray = Object.keys(auth.userProfile);
+    this.profileKeys = Object.keys(auth.userProfile);
   }
 
   ngOnInit() {
-    console.log(this.profileArray);
   }
 
 }
