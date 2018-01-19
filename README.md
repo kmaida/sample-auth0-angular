@@ -20,7 +20,7 @@ $ ng g service shared/api --no-spec
 $ ng g component shared/loading --is --it --flat --no-spec
 $ ng g component pages/home --is --no-spec
 $ ng g module pages/admin --routing --no-spec
-$ ng g component pages/admin/admin --is --export=true --no-spec
+$ ng g component pages/admin/dragons --is --export=true --no-spec
 $ ng g module auth
 $ ng g service auth/auth --no-spec
 $ ng g guard auth/auth --no-spec

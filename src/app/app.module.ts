@@ -14,6 +14,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { LoadingComponent } from './shared/loading.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { DinosaursComponent } from './pages/dinosaurs/dinosaurs.component';
+// API service
+import { ApiService } from './shared/api.service';
 
 
 @NgModule({
@@ -23,7 +26,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
     HomeComponent,
     HeaderComponent,
     LoadingComponent,
-    ProfileComponent
+    ProfileComponent,
+    DinosaursComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +35,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
     AuthModule.forRoot()
   ],
   providers: [
+    ApiService
   ],
   bootstrap: [AppComponent]
 })

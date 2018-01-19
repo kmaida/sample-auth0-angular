@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../shared/api.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class HomeComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit() {

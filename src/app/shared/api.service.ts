@@ -10,15 +10,15 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  // GET data (authenticated users)
-  getData$(): Observable<{[key: string]: any}[]> {
+  // GET dinosaur data (authenticated users)
+  getDinosaurs$(): Observable<{[key: string]: any}[]> {
     return this.http
-      .get(`${this._API}data`)
+      .get(`${this._API}dinosaurs`)
       .pipe(catchError(this._catchError));
   }
 
-  // GET admin data (authenticated admin users)
-  getAdminData$(): Observable<{[key: string]: any}[]> {
+  // GET dragon data (authenticated admin users)
+  getDragons$(): Observable<{[key: string]: any}[]> {
     return this.http
       .get(`${this._API}admin`)
       .pipe(catchError(this._catchError));
@@ -26,7 +26,7 @@ export class ApiService {
 
   // Handle errors
   private _catchError(error, caught): Observable<any> {
-    console.error('Error occurred:', error);
+    console.error('Error occurred getting data:', error);
     return Observable.throw(error);
   }
 

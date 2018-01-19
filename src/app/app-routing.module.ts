@@ -5,6 +5,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { AdminGuard } from './auth/admin.guard';
 import { CallbackComponent } from './pages/callback.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { DinosaursComponent } from './pages/dinosaurs/dinosaurs.component';
 
 const routes: Routes = [
   {
@@ -22,7 +23,12 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'admin',
+    path: 'dinosaurs',
+    component: DinosaursComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'dragons',
     loadChildren: './pages/admin/admin.module#AdminModule',
     canLoad: [AdminGuard]
   }

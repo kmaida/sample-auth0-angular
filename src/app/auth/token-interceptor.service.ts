@@ -7,7 +7,9 @@ import {
   HttpInterceptor,
   HttpErrorResponse
 } from '@angular/common/http';
+// Import AuthService to access login method
 import { AuthService } from './auth.service';
+// Manage observables
 import { Observable } from 'rxjs/Observable';
 import { catchError } from 'rxjs/operators';
 
@@ -20,7 +22,7 @@ export class TokenInterceptorService implements HttpInterceptor {
     // Set request Authorization header
     const authReq = req.clone({
       headers: new HttpHeaders().set(
-        'Authorization', `Bearer ${localStorage.getItem('token')}`
+        'Authorization', `Bearer ${localStorage.getItem('access_token')}`
       )
     });
 
@@ -32,8 +34,8 @@ export class TokenInterceptorService implements HttpInterceptor {
 
   // Handle any errors
   private _catchError(error, caught): Observable<any> {
-    console.log(`An error occurred: ${error}`);
     if (error instanceof HttpErrorResponse) {
+      console.log(error.message);
       if (error.status === 401) {
         this.auth.login();
       }

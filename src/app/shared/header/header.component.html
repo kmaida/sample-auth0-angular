@@ -8,11 +8,17 @@
         routerLinkActive="active"
         [routerLinkActiveOptions]="{exact: true}">Home</a>
     </li>
+    <li *ngIf="auth.loggedIn" class="nav-item">
+      <a
+        class="nav-link"
+        routerLink="/dinosaurs"
+        routerLinkActive="active">Dinosaurs</a>
+    </li>
     <li *ngIf="auth.isAdmin" class="nav-item">
       <a
         class="nav-link"
-        routerLink="/admin"
-        routerLinkActive="active">Admin</a>
+        routerLink="/dragons"
+        routerLinkActive="active">Dragons</a>
     </li>
   </ul>
 
