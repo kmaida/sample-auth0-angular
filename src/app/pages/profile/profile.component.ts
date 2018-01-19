@@ -7,7 +7,7 @@ import { AuthService } from '../../auth/auth.service';
   styles: []
 })
 export class ProfileComponent implements OnInit {
-  profileKeys: {[key: string]: any};
+  profileKeys: string[];
 
   constructor(public auth: AuthService) {
     this.profileKeys = Object.keys(auth.userProfile);

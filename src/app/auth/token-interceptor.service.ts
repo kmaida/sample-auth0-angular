@@ -19,19 +19,24 @@ export class TokenInterceptorService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // Set request Authorization header
     const authReq = req.clone({
-      headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`)
+      headers: new HttpHeaders().set(
+        'Authorization', `Bearer ${localStorage.getItem('token')}`
+      )
     });
 
-    // Send the new, authorized request
+    // Send the new authorized request
     return next.handle(authReq).pipe(
       catchError(this._catchError)
     );
   }
 
+  // Handle any errors
   private _catchError(error, caught): Observable<any> {
-    console.log('Error occurred:', error);
-    if (error.status === 401) {
-      this.auth.login();
+    console.log(`An error occurred: ${error}`);
+    if (error instanceof HttpErrorResponse) {
+      if (error.status === 401) {
+        this.auth.login();
+      }
     }
     return Observable.throw(error);
   }

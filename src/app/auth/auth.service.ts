@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+// Import Router for redirection
 import { Router } from '@angular/router';
 // Get auth configuration from environment
 import { environment } from './../../environments/environment';
@@ -8,16 +9,13 @@ import * as auth0 from 'auth0-js';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { mergeMap } from 'rxjs/operators';
-// @NOTE: using import { of } from 'rxjs/observable/of' works but the usage throws errors
-// @NOTE: the same is the case for timer
-// @NOTE: This should supposedly be fixed in RxJS 6
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/timer';
 
 @Injectable()
 export class AuthService {
   // Create Auth0 web auth instance
-  private _auth0 = new auth0.WebAuth({
+  private _Auth0 = new auth0.WebAuth({
     clientID: environment.auth.clientId,
     domain: environment.auth.domain,
     responseType: 'token',
@@ -34,8 +32,8 @@ export class AuthService {
   refreshSub: Subscription;
 
   constructor(private router: Router) {
-    // If authenticated, set local profile property.
-    // If not authenticated but there are still items in localStorage, log out.
+    // If authenticated, set local profile property
+    // If not authenticated but there are still items in localStorage, log out
     const lsProfile = localStorage.getItem('profile');
     const lsToken = localStorage.getItem('access_token');
 
@@ -48,18 +46,18 @@ export class AuthService {
   }
 
   login(redirect?: string) {
-    // Set redirect upon login if trying to access a protected route.
-    // Redirect will take place after user is authenticated.
+    // Set redirect upon login if trying to access a protected route
+    // Redirect will take place after user is authenticated
     const _redirect = redirect ? redirect : this.router.url;
     localStorage.setItem('auth_redirect', _redirect);
     // Auth0 authorize request
-    this._auth0.authorize();
+    this._Auth0.authorize();
   }
 
   handleAuth() {
     this.loading = true;
     // When Auth0 hash parsed, get profile
-    this._auth0.parseHash((err, authResult) => {
+    this._Auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken) {
         window.location.hash = '';
         this._getProfile(authResult);
@@ -74,13 +72,15 @@ export class AuthService {
 
   private _getProfile(authResult) {
     // Use access token to retrieve user's profile and set session
-    this._auth0.client.userInfo(authResult.accessToken, (err, profile) => {
-      if (profile) {
-        this._setSession(authResult, profile);
-      } else if (err) {
-        console.warn(`Error retrieving profile: ${err.error}`);
+    this._Auth0.client.userInfo(authResult.accessToken,
+      (err, profile) => {
+        if (profile) {
+          this._setSession(authResult, profile);
+        } else if (err) {
+          console.warn(`Error retrieving profile: ${err.error}`);
+        }
       }
-    });
+    );
   }
 
   private _setSession(authResult, profile?) {
@@ -94,8 +94,8 @@ export class AuthService {
       this.userProfile = profile;
     }
     // Session set; set loggedIn
-    this.loggedIn = true;
     this.loading = false;
+    this.loggedIn = true;
     // Redirect to desired route
     this.router.navigate([localStorage.getItem('auth_redirect')]);
   }
@@ -111,9 +111,10 @@ export class AuthService {
   }
 
   renewToken() {
-    this._auth0.checkSession({},
+    this._Auth0.checkSession({},
       (err, authResult) => {
         if (authResult && authResult.accessToken) {
+          // If successfully renewed, set session
           this._setSession(authResult);
         } else if (err) {
           console.warn(`Could not renew token: ${err.errorDescription}`);
