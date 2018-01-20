@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../shared/api.service';
+// Manage observable
 import { Observable } from 'rxjs/Observable';
-import { map, catchError } from 'rxjs/operators';
+import { tap, catchError } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Dinosaur } from '../../shared/dinosaur';
 
 @Component({
   selector: 'app-dinosaurs',
@@ -10,32 +12,30 @@ import { HttpErrorResponse } from '@angular/common/http';
   styles: []
 })
 export class DinosaursComponent implements OnInit {
-  dinosaurs$: Observable<{[key: string]: number|string}>;
+  dinosaurs$: Observable<Dinosaur[]>;
   loading: boolean;
-  error: string;
+  error: boolean;
 
   constructor(private api: ApiService) {
     this.dinosaurs$ = api.getDinosaurs$().pipe(
-      map((res) => this._success(res)),
-      catchError((error, caught) => this._showError(error, caught))
+      tap(
+        this._onNext,
+        this._onError
+      )
     );
   }
 
   ngOnInit() {
   }
 
-  _success(res) {
+  private _onNext(val) {
     this.loading = false;
-    this.error = '';
-    return res;
+    this.error = false;
   }
 
-  _showError(error, caught): Observable<any> {
+  private _onError(error) {
     this.loading = false;
-    if (error instanceof HttpErrorResponse) {
-      console.log(error);
-    }
-    return Observable.throw(error);
+    this.error = true;
   }
 
 }

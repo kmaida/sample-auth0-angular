@@ -17,6 +17,8 @@ $ npm install auth0-js@latest --save
 $ ng g component pages/callback --is --it --flat --no-spec
 $ ng g component shared/header --is --no-spec
 $ ng g service shared/api --no-spec
+$ ng g interface shared/dinosaur
+$ ng g interface shared/dragon
 $ ng g component shared/loading --is --it --flat --no-spec
 $ ng g component pages/home --is --no-spec
 $ ng g module pages/admin --routing --no-spec
