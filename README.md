@@ -11,24 +11,34 @@ Make sure you have the `sample-auth0-nodeserver` set up and running.
 ## Angular App Setup
 
 ```bash
+# Create app
 $ ng new auth0-app --routing --skip-tests
 $ cd auth0-app
 $ npm install auth0-js@latest --save
+# Callback page
 $ ng g component pages/callback --is --it --flat --no-spec
-$ ng g component shared/header --is --no-spec
-$ ng g service shared/api --no-spec
-$ ng g interface shared/dinosaur
-$ ng g interface shared/dragon
-$ ng g component shared/loading --is --it --flat --no-spec
+# Homepage
 $ ng g component pages/home --is --no-spec
-$ ng g module pages/admin --routing --no-spec
-$ ng g component pages/admin/dragons --is --export=true --no-spec
+# Dinosaurs page
+$ ng g component pages/dinosaurs --no-spec
+$ ng g interface pages/dinosaurs/dinosaur
+# Shared module
+$ ng g module shared
+$ ng g component shared/header --is --export=true --no-spec
+$ ng g component shared/loading --is --it --flat --export=true --no-spec
+$ ng g component shared/error --is --it --flat --export=true --no-spec
+$ ng g service shared/api --no-spec
+# Auth module
 $ ng g module auth
 $ ng g service auth/auth --no-spec
 $ ng g guard auth/auth --no-spec
 $ ng g guard auth/admin --no-spec
 $ ng g service auth/token-interceptor --no-spec
 $ ng g component pages/profile --is --no-spec
+# Admin module
+$ ng g module pages/admin --routing --no-spec
+$ ng g component pages/admin/dragons --is --export=true --no-spec
+$ ng g interface pages/admin/dragons/dragon
 ```
 
 ### Add Bootstrap

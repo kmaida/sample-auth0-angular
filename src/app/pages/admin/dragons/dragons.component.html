@@ -1,3 +1,10 @@
-<p>
-  dragons works!
-</p>
+<ng-template #noDragons>
+  <app-loading *ngIf="loading"></app-loading>
+  <app-error *ngIf="error"></app-error>
+</ng-template>
+
+<div *ngIf="dragons$ | async; let dragonList; else noDragons">
+  <div *ngFor="let dragon of dragonList">{{ dragon.name }}</div>
+</div>
+
+{{ msg }}

@@ -18,7 +18,7 @@ export class ApiService {
 
   // GET dragon data (authenticated admin users)
   getDragons$(): Observable<any> {
-    return this.http.get(`${this._API}admin`);
+    return this.http.get(`${this._API}dragons`);
   }
 
 }
