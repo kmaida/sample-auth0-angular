@@ -2,6 +2,8 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 // Header navigation routerLinks
 import { RouterModule } from '@angular/router';
+// Set page titles
+import { Title } from '@angular/platform-browser';
 // Components
 import { HeaderComponent } from './header/header.component';
 import { LoadingComponent } from './loading.component';
@@ -30,7 +32,8 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       providers: [
-        ApiService
+        ApiService,
+        Title
       ]
     };
   }

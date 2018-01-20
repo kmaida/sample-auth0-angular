@@ -89,3 +89,7 @@ Once you've enabled a social provider, select that provider's **Clients** tab an
 *_Social providers using Auth0 Dev Keys are identified by an orange_ `!` _icon in the main view:_ 
 
 ![Social providers using Auth0 Dev Keys](https://cdn.auth0.com/blog/ngatl/idp-devkeys.png)
+
+## Resources
+
+* [Pipeable RxJS operators](https://github.com/ReactiveX/rxjs/blob/master/doc/pipeable-operators.md)

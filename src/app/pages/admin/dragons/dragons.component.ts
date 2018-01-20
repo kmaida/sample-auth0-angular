@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+// Import Title service
+import { Title } from '@angular/platform-browser';
 // Import API service
 import { ApiService } from '../../../shared/api.service';
 // Manage observable
@@ -13,10 +15,14 @@ import { Dragon } from './dragon';
   styles: []
 })
 export class DragonsComponent implements OnInit {
+  pageTitle = 'Dragons';
   dragons$: Observable<Dragon[]>;
   errorMsg: string;
 
-  constructor(public api: ApiService) {
+  constructor(
+    private title: Title,
+    public api: ApiService
+  ) {
     this.dragons$ = api.getDragons$()
       .pipe(
         catchError((error, caught) => this._catchError(error, caught))
@@ -24,6 +30,7 @@ export class DragonsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.title.setTitle(this.pageTitle);
   }
 
   // Handle errors: generate an error message

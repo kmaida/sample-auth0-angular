@@ -1,8 +1,29 @@
+<h1 class="text-center">{{ pageTitle }}</h1>
+
 <ng-template #noDragons>
   <app-loading *ngIf="api.loading"></app-loading>
   <app-error *ngIf="api.error" [msg]="errorMsg"></app-error>
 </ng-template>
 
-<div *ngIf="dragons$ | async; let dragonList; else noDragons">
-  <div *ngFor="let dragon of dragonList">{{ dragon.name }}</div>
+<div *ngIf="dragons$ | async; let dragonList; else noDragons" class="row mb-3">
+  <div *ngFor="let dragon of dragonList" class="card-deck col-xs-12 col-md-6">
+    <div class="card my-2">
+      <div class="card-header">
+        <h5 class="card-title mb-0">{{ dragon.name }}</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <dl>
+            <dt>Type:</dt>
+            <dd>{{ dragon.type }}</dd>
+            <dt>Source:</dt>
+            <dd>{{ dragon.source }}</dd>
+          </dl>
+        </li>
+        <li class="list-group-item">
+          <p [innerHTML]="dragon.info" class="mb-0"></p>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

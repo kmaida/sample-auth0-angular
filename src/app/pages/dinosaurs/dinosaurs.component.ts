@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+// Import Title service
+import { Title } from '@angular/platform-browser';
 // Import API service
 import { ApiService } from '../../shared/api.service';
 // Manage observable
@@ -13,10 +15,14 @@ import { Dinosaur } from './dinosaur';
   styles: []
 })
 export class DinosaursComponent implements OnInit {
+  pageTitle = 'Dinosaurs';
   dinosaurs$: Observable<Dinosaur[]>;
   errorMsg: string;
 
-  constructor(public api: ApiService) {
+  constructor(
+    public api: ApiService,
+    private title: Title
+  ) {
     this.dinosaurs$ = api.getDinosaurs$()
       .pipe(
         catchError((error, caught) => this._catchError(error, caught))
@@ -24,6 +30,7 @@ export class DinosaursComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.title.setTitle(this.pageTitle);
   }
 
   // Handle errors: generate an error message

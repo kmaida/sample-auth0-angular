@@ -8,7 +8,7 @@ import {
   HttpInterceptor,
   HttpErrorResponse
 } from '@angular/common/http';
-// Import AuthService to access login method
+// Import authentication service to access login and logout methods
 import { AuthService } from './auth.service';
 // Manage observables
 import { Observable } from 'rxjs/Observable';
