@@ -1,3 +1,23 @@
-<p>
-  home works!
-</p>
+<h1 class="text-center">{{ pageTitle }}</h1>
+
+<div class="lead">
+  <!-- User is not authenticated -->
+  <ng-template [ngIf]="!auth.loggedIn">
+    <!-- tabindex to login link to trigger Bootstrap link styles with no href attr -->
+    You must <a (click)="auth.login()" tabindex="0">log in</a> to access content in this app.
+  </ng-template>
+  <!-- User is authenticated -->
+  <ng-template [ngIf]="auth.loggedIn">
+    <h4 *ngIf="auth.userProfile">
+      Hello, {{ auth.userProfile.name }}!
+    </h4>
+    <!-- User is not an admin -->
+    <p *ngIf="!auth.isAdmin">
+      You can access the <a routerLink="/dinosaurs">Dinosaurs</a> list.
+    </p>
+    <!-- User is an admin -->
+    <p *ngIf="auth.isAdmin">
+      You have elevated privileges! You may access <a routerLink="/dinosaurs">Dinosaurs</a> as well as the special <a routerLink="/dragons">Dragons</a> list.
+    </p>
+  </ng-template>
+</div>
