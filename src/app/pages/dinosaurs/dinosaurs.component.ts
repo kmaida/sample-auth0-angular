@@ -17,14 +17,16 @@ export class DinosaursComponent implements OnInit {
   errorMsg: string;
 
   constructor(public api: ApiService) {
-    this.dinosaurs$ = api.getDinosaurs$().pipe(
-      catchError((error, caught) => this._catchError(error, caught))
-    );
+    this.dinosaurs$ = api.getDinosaurs$()
+      .pipe(
+        catchError((error, caught) => this._catchError(error, caught))
+      );
   }
 
   ngOnInit() {
   }
 
+  // Handle errors: generate an error message
   private _catchError(error, caught): Observable<any> {
     this.errorMsg = 'An error occurred fetching dinosaurs data. Please try again.';
     return Observable.throw(this.errorMsg);

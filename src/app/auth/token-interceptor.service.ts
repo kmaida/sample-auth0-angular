@@ -30,19 +30,21 @@ export class TokenInterceptorService implements HttpInterceptor {
     return next.handle(authReq)
       .pipe(
         tap(
-          this._onNext,
-          this._onError
+          // Must use arrow syntax in order to preserve "this"
+          res => this._onNext(res),
+          error => this._onError(error)
         )
       );
   }
 
+  // Cloned request sent with authorization header
   private _onNext(res) {
     if (res instanceof HttpResponse) {
       console.log(`Sent an authorized HTTP request with status ${res.status}: ${res.statusText}`);
     }
   }
 
-  // Handle any errors
+  // Handle errors
   private _onError(error) {
     if (error instanceof HttpErrorResponse) {
       const errMsg = error.message;

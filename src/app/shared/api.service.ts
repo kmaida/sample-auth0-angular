@@ -9,7 +9,6 @@ import 'rxjs/add/observable/throw';
 // Import authentication service
 import { AuthService } from '../auth/auth.service';
 
-
 @Injectable()
 export class ApiService {
   private _API = environment.auth.audience;
@@ -30,6 +29,7 @@ export class ApiService {
   getDinosaurs$(): Observable<any> {
     this._setStates(true, false);
     return this.http.get(`${this._API}dinosaurs`).pipe(
+      // Must use arrow syntax in order to preserve "this"
       catchError((error, caught) => this._catchError(error, caught))
     );
   }

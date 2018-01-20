@@ -18,14 +18,15 @@ export class DragonsComponent implements OnInit {
 
   constructor(public api: ApiService) {
     this.dragons$ = api.getDragons$()
-    .pipe(
-      catchError((error, caught) => this._catchError(error, caught))
-    );
+      .pipe(
+        catchError((error, caught) => this._catchError(error, caught))
+      );
   }
 
   ngOnInit() {
   }
 
+  // Handle errors: generate an error message
   private _catchError(error, caught): Observable<any> {
     this.errorMsg = 'An error occurred fetching dragons data. Please try again.';
     return Observable.throw(this.errorMsg);
