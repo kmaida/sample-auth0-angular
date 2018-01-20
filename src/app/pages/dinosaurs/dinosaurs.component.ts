@@ -17,22 +17,25 @@ export class DinosaursComponent implements OnInit {
   error: boolean;
 
   constructor(private api: ApiService) {
-    this.dinosaurs$ = api.getDinosaurs$().pipe(
-      tap(
-        this._onNext,
-        this._onError
-      )
-    );
+    this.dinosaurs$ = api.getDinosaurs$()
+      .pipe(
+        tap(
+          this._onNext,
+          this._onError
+        )
+      );
   }
 
   ngOnInit() {
   }
 
+  // API data emitted successfully
   private _onNext(val) {
     this.loading = false;
     this.error = false;
   }
 
+  // An error occurred retrieving API data
   private _onError(error) {
     this.loading = false;
     this.error = true;
