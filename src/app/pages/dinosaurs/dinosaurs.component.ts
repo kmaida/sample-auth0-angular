@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../shared/api.service';
 // Manage observable
 import { Observable } from 'rxjs/Observable';
-import { tap, catchError } from 'rxjs/operators';
-import { Dinosaur } from './dinosaur';
+import { catchError } from 'rxjs/operators';
 import 'rxjs/add/observable/throw';
+import { Dinosaur } from './dinosaur';
 
 @Component({
   selector: 'app-dinosaurs',
@@ -14,12 +14,20 @@ import 'rxjs/add/observable/throw';
 })
 export class DinosaursComponent implements OnInit {
   dinosaurs$: Observable<Dinosaur[]>;
+  errorMsg: string;
 
   constructor(public api: ApiService) {
-    this.dinosaurs$ = api.getDinosaurs$();
+    this.dinosaurs$ = api.getDinosaurs$().pipe(
+      catchError((error, caught) => this._catchError(error, caught))
+    );
   }
 
   ngOnInit() {
+  }
+
+  private _catchError(error, caught): Observable<any> {
+    this.errorMsg = 'An error occurred fetching dinosaurs data. Please try again.';
+    return Observable.throw(this.errorMsg);
   }
 
 }

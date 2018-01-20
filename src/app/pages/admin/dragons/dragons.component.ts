@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../../shared/api.service';
 // Manage observable
 import { Observable } from 'rxjs/Observable';
-import { tap, catchError } from 'rxjs/operators';
-import { Dragon } from './dragon';
+import { catchError } from 'rxjs/operators';
 import 'rxjs/add/observable/throw';
+import { Dragon } from './dragon';
 
 @Component({
   selector: 'app-dragons',
@@ -14,32 +14,21 @@ import 'rxjs/add/observable/throw';
 })
 export class DragonsComponent implements OnInit {
   dragons$: Observable<Dragon[]>;
-  loading = true;
-  error: string;
+  errorMsg: string;
 
   constructor(public api: ApiService) {
     this.dragons$ = api.getDragons$()
-      .pipe(
-        tap(this._onNext),
-        catchError(this._onError)
-      );
+    .pipe(
+      catchError((error, caught) => this._catchError(error, caught))
+    );
   }
 
   ngOnInit() {
   }
 
-  // API data emitted successfully
-  private _onNext(val) {
-    console.log('Retrived API data successfully:', val);
-    this.loading = false;
-    this.error = null;
-  }
-
-  // An error occurred retrieving API data
-  _onError(error, caught): Observable<any> {
-    this.loading = false;
-    this.error = 'An error occurred fetching dragons data.';
-    return Observable.throw(this.error);
+  private _catchError(error, caught): Observable<any> {
+    this.errorMsg = 'An error occurred fetching dragons data. Please try again.';
+    return Observable.throw(this.errorMsg);
   }
 
 }

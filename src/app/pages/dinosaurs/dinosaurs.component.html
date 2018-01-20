@@ -1,10 +1,8 @@
 <ng-template #noDinos>
   <app-loading *ngIf="api.loading"></app-loading>
-  <app-error *ngIf="api.error" [msg]="api.error"></app-error>
+  <app-error *ngIf="api.error" [msg]="errorMsg"></app-error>
 </ng-template>
 
 <div *ngIf="dinosaurs$ | async; let dinoList; else noDinos">
   <div *ngFor="let dino of dinoList">{{ dino.name }}</div>
 </div>
-
-{{ api.loading }} {{ api.error }}

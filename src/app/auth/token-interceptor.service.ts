@@ -46,7 +46,7 @@ export class TokenInterceptorService implements HttpInterceptor {
   private _onError(error) {
     if (error instanceof HttpErrorResponse) {
       const errMsg = error.message;
-      if (error.status === 401 || errMsg.indexOf('No JWT present') > -1 || errMsg.indexOf('UnauthorizedError') > -1) {
+      if (error.status === 401 || errMsg.indexOf('No JWT') > -1 || errMsg.indexOf('Unauthorized') > -1) {
         // Clear any invalid session data that may still be present
         this.auth.logout();
         // Log in again

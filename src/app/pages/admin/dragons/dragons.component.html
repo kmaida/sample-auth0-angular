@@ -1,6 +1,6 @@
 <ng-template #noDragons>
   <app-loading *ngIf="api.loading"></app-loading>
-  <app-error *ngIf="api.error" [msg]="api.error"></app-error>
+  <app-error *ngIf="api.error" [msg]="errorMsg"></app-error>
 </ng-template>
 
 <div *ngIf="dragons$ | async; let dragonList; else noDragons">
