@@ -1,6 +1,7 @@
 {
-  "name": "auth0-app",
-  "version": "0.0.0",
+  "name": "sample-auth0-angular",
+  "version": "0.1.0",
+  "author": "Kim Maida",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -10,7 +11,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "^5.1.0",
     "@angular/common": "^5.1.0",
@@ -27,7 +28,7 @@
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
-    "@angular/cli": "1.6.4",
+    "@angular/cli": "^1.6.4",
     "@angular/compiler-cli": "^5.1.0",
     "@angular/language-service": "^5.1.0",
     "@types/jasmine": "~2.8.3",
