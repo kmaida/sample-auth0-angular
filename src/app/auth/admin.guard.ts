@@ -23,8 +23,8 @@ export class AdminGuard implements CanLoad {
       return false;
     } else {
       // If user is authenticated but not an admin, redirect to homepage
-      console.log(`You do not have the necessary permissions to access ${url}`);
-      this.router.navigate(['/']);
+      console.log(`You do not have the necessary permissions to access ${url}.`);
+      this.router.navigate(['home']);
       return false;
     }
   }
