@@ -1,18 +1,20 @@
 # Auth0 Angular Application
 
-## Node Server
+Implement [Auth0](https://auth0.com) and secure an Angular application with an authenticated [Node.js API](https://github.com/kmaida/sample-auth0-nodeserver).
 
-A Node.js server is required for this app in order to make authenticated API requests and display returned data in the app. Please follow instructions in this repo:
+## Dependency: Node API
+
+A Node.js server is required for this app in order to make authenticated API requests and display returned data in the app. Please follow the instructions in this repo to clone the server and set up your Auth0 account for authentication:
 
 **[sample-auth0-nodeserver](https://github.com/kmaida/sample-auth0-nodeserver)**
 
-Make sure you have the `sample-auth0-nodeserver` set up and running.
+Before proceeding with the Angular tutorial, make sure you have the `sample-auth0-nodeserver` running.
 
 ## Auth0 Setup
 
 You should already have a **[free Auth0 account](https://auth0.com/signup)** from following the README instructions for the [sample-auth0-nodeserver](https://github.com/kmaida/sample-auth0-nodeserver).
 
-### Create Auth0 Client Application
+### Create an Auth0 Client Application
 
 Log into your [Auth0 Dashboard](https://manage.auth0.com) and **create a new [client](https://manage.auth0.com/#/clients)** with the following settings:
 
@@ -46,6 +48,8 @@ Once you've enabled a social provider, select that provider's **Clients** tab an
 
 ## Angular App Setup
 
+Now you can set up your Angular application.
+
 ### Install the Angular CLI
 
 Install the latest version of the [Angular CLI](https://github.com/angular/angular-cli) globally:
@@ -56,7 +60,7 @@ $ npm install -g @angular/cli
 
 > **Note:** If you encounter `EACCESS` errors, you will have to run the command with `sudo` (Mac/Linux) or in a command window running as Administrator (Windows).
 
-### Create New Angular App
+### Create a New Angular App
 
 In a parent directory of your choosing, create your Angular app and install the [auth0.js](https://github.com/auth0/auth0.js) library with the following commands:
 
@@ -66,7 +70,11 @@ $ cd auth0-app
 $ npm install auth0-js@latest --save
 ```
 
-### Add Bootstrap
+Generate your new app (`auth0-app`) with routing and no tests.*
+
+*_This is done for tutorial brevity. If you'd like to write your own tests, you should not use the `--skip-tests` flag._
+
+### Add Bootstrap CSS
 
 For ease of styling, add [Bootstrap CSS](https://getbootstrap.com/docs/4.0/getting-started/introduction/#css) to your `src/index.html` file's `<head>` like so:
 
