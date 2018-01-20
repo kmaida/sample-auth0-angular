@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {
   HttpRequest,
+  HttpResponse,
   HttpHeaders,
   HttpHandler,
   HttpEvent,
@@ -11,8 +12,7 @@ import {
 import { AuthService } from './auth.service';
 // Manage observables
 import { Observable } from 'rxjs/Observable';
-import { catchError } from 'rxjs/operators';
-import 'rxjs/add/observable/throw';
+import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class TokenInterceptorService implements HttpInterceptor {
@@ -29,15 +29,29 @@ export class TokenInterceptorService implements HttpInterceptor {
     // Send the new authorized request
     return next.handle(authReq)
       .pipe(
-        catchError(this._catchError)
+        tap(
+          this._onNext,
+          this._onError
+        )
       );
   }
 
-  // Handle any errors
-  private _catchError(error, caught): Observable<any> {
-    if (error instanceof HttpErrorResponse && error.status === 401) {
-      this.auth.login();
+  private _onNext(res) {
+    if (res instanceof HttpResponse) {
+      console.log(`Sent an authorized HTTP request with status ${res.status}: ${res.statusText}`);
     }
-    return Observable.throw(error);
+  }
+
+  // Handle any errors
+  private _onError(error) {
+    if (error instanceof HttpErrorResponse) {
+      const errMsg = error.message;
+      if (error.status === 401 || errMsg.indexOf('No JWT present') > -1 || errMsg.indexOf('UnauthorizedError') > -1) {
+        // Clear any invalid session data that may still be present
+        this.auth.logout();
+        // Log in again
+        this.auth.login();
+      }
+    }
   }
 }

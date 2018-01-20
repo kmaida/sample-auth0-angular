@@ -5,6 +5,7 @@ import { ApiService } from '../../../shared/api.service';
 import { Observable } from 'rxjs/Observable';
 import { tap, catchError } from 'rxjs/operators';
 import { Dragon } from './dragon';
+import 'rxjs/add/observable/throw';
 
 @Component({
   selector: 'app-dragons',
@@ -16,7 +17,7 @@ export class DragonsComponent implements OnInit {
   loading = true;
   error: string;
 
-  constructor(private api: ApiService) {
+  constructor(public api: ApiService) {
     this.dragons$ = api.getDragons$()
       .pipe(
         tap(this._onNext),
