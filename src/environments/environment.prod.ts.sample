@@ -1,0 +1,11 @@
+export const environment = {
+  production: true,
+  auth: {
+    clientId: '{Auth0_Client_ID}',
+    domain: '{Auth0_Domain}' // e.g., 'your-account.auth0.com',
+    redirect: 'http://localhost:8080/callback',
+    audience: '{Auth0_API_Identifier}', // e.g., 'http://localhost:3001/api/'
+    scope: 'openid profile email',
+    namespace: '{Auth0_Rules_Roles_Namespace}' // e.g., 'https://example.com/roles'
+  }
+};
