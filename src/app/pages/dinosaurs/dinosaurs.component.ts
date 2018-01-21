@@ -23,10 +23,9 @@ export class DinosaursComponent implements OnInit {
     public api: ApiService,
     private title: Title
   ) {
-    this.dinosaurs$ = api.getDinosaurs$()
-      .pipe(
-        catchError((error, caught) => this._catchError(error, caught))
-      );
+    this.dinosaurs$ = api.getDinosaurs$().pipe(
+      catchError((error, caught) => this._catchError(error, caught))
+    );
   }
 
   ngOnInit() {

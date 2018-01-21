@@ -1,3 +1,4 @@
+<h1 class="text-center">{{ pageTitle }}</h1>
 <ul>
   <li *ngFor="let key of profileKeys">
     <strong>{{ key }}:</strong> <code>{{ auth.userProfile[key] | json }}</code>

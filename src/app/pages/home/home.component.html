@@ -3,7 +3,7 @@
 <div class="lead">
   <!-- User is not authenticated -->
   <ng-template [ngIf]="!auth.loggedIn">
-    <!-- tabindex to login link to trigger Bootstrap link styles with no href attr -->
+    <!-- tabindex on login link to trigger Bootstrap link styles with no href attr -->
     You must <a (click)="auth.login()" tabindex="0">log in</a> to access content in this app.
   </ng-template>
   <!-- User is authenticated -->

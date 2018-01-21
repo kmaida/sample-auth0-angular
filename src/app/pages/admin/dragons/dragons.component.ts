@@ -23,10 +23,9 @@ export class DragonsComponent implements OnInit {
     private title: Title,
     public api: ApiService
   ) {
-    this.dragons$ = api.getDragons$()
-      .pipe(
-        catchError((error, caught) => this._catchError(error, caught))
-      );
+    this.dragons$ = api.getDragons$().pipe(
+      catchError((error, caught) => this._catchError(error, caught))
+    );
   }
 
   ngOnInit() {

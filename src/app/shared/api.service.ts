@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 // HTTP
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+// API URL
 import { environment } from './../../environments/environment';
 // Manage observables
 import { Observable } from 'rxjs/Observable';
-import { tap, catchError } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import 'rxjs/add/observable/throw';
 // Import authentication service
 import { AuthService } from '../auth/auth.service';
@@ -42,6 +43,7 @@ export class ApiService {
     );
   }
 
+  // Handle errors
   private _catchError(error, caught): Observable<any> {
     this._setStates(false, true);
     return Observable.throw(error.message);
