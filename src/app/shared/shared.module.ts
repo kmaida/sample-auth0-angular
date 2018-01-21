@@ -7,9 +7,9 @@ import { Title } from '@angular/platform-browser';
 // Components
 import { HeaderComponent } from './header/header.component';
 import { LoadingComponent } from './loading.component';
+import { ErrorComponent } from './error.component';
 // Providers
 import { ApiService } from './api.service';
-import { ErrorComponent } from './error.component';
 
 @NgModule({
   imports: [
