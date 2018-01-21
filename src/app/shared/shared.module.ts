@@ -32,8 +32,8 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       providers: [
-        ApiService,
-        Title
+        Title,
+        ApiService
       ]
     };
   }
