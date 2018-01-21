@@ -44,6 +44,22 @@ The app will be available at [http://localhost:4200](http://localhost:4200).
 
 > **Important:** Make sure you have the [sample-auth0-nodeserver](https://github.com/kmaida/sample-auth0-nodeserver) running to provide API data for the Angular app.
 
+## Deploying to Heroku
+
+Make sure you have [Heroku for Node](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction) installed on your machine. Create a new Heroku app in the root of this project.
+
+```bash
+heroku create
+```
+
+When all changes have been pushed to the main repository for the app, push to Heroku to start an automatic build.
+
+```bash
+git push heroku master
+```
+
+The app will be served using the small express server in `server.js`.
+
 ## License
 
 [MIT](LICENSE) © Kim Maida 2018
