@@ -4,7 +4,7 @@ import { DragonsComponent } from './dragons/dragons.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'dragons',
     component: DragonsComponent
   }
 ];

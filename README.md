@@ -4,7 +4,7 @@ Implement [Auth0](https://auth0.com) and secure an Angular application with an a
 
 ## Angular Tutorial
 
-To begin, proceed to **[the docs folder](https://github.com/kmaida/sample-auth0-angular/blob/master/docs)** to follow along with the workshop tutorial.
+To begin, proceed to **[Auth0 Angular Workshop](https://kmaida.gitbooks.io/auth0-angular-workshop/)** to follow along with the tutorial.
 
 ## License
 

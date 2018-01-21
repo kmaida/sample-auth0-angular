@@ -32,7 +32,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'dragons',
+    path: 'admin',
     loadChildren: './pages/admin/admin.module#AdminModule',
     canLoad: [AdminGuard]
   }
