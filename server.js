@@ -1,11 +1,9 @@
 // Modules
 const path = require('path');
 const express = require('express');
-const cors = require('cors');
 
 // App
 const app = express();
-app.use(cors());
 
 // Run the app with static files from the /dist directory
 app.use(express.static(__dirname + '/dist'));

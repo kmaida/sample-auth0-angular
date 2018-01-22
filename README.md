@@ -30,7 +30,9 @@ npm install
 
 ### Configure Environment
 
-Locate the `environment.ts.sample` file and change its filename to `environment.ts` to activate the file. Then add the necessary [Auth0 configuration to the environment variable as described here](https://kmaida.gitbooks.io/auth0-angular-workshop/content/angular-setup.html#configure-environment).
+Locate `environment.ts.sample` and change its filename to `environment.ts` to activate the file. Then add the necessary [Auth0 configuration to the environment variable as described here](https://kmaida.gitbooks.io/auth0-angular-workshop/content/angular-setup.html#configure-environment).
+
+Next locate `environment.prod.ts.sample` and change its filename to `environment.prod.ts` to activate the file. Then add the necessary [Auth0 configuration for a production environment as described here](https://kmaida.gitbooks.io/auth0-angular-workshop/content/build-and-deploy.html#production-environment-variables).
 
 ### Serve the App
 
