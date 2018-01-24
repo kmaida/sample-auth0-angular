@@ -12,11 +12,11 @@
       Hello, {{ auth.userProfile.name }}!
     </h4>
     <!-- User is not an admin -->
-    <p *ngIf="!auth.isAdmin">
+    <p *ngIf="!auth.hasRole('admin')">
       You can access the <a routerLink="/dinosaurs">Dinosaurs</a> list.
     </p>
     <!-- User is an admin -->
-    <p *ngIf="auth.isAdmin">
+    <p *ngIf="auth.hasRole('admin')">
       You have elevated privileges! You may access <a routerLink="/dinosaurs">Dinosaurs</a> as well as the special <a routerLink="/admin/dragons">Dragons</a> list.
     </p>
   </ng-template>

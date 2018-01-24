@@ -36,7 +36,8 @@ const routes: Routes = [
   {
     path: 'admin',
     loadChildren: './pages/admin/admin.module#AdminModule',
-    canLoad: [AdminGuard]
+    canLoad: [AdminGuard],
+    data: { role: 'admin' }
   }
 ];
 

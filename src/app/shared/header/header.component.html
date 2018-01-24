@@ -14,7 +14,7 @@
         routerLink="/dinosaurs"
         routerLinkActive="active">Dinosaurs</a>
     </li>
-    <li *ngIf="auth.isAdmin" class="nav-item">
+    <li *ngIf="auth.hasRole('admin')" class="nav-item">
       <a
         class="nav-link"
         routerLink="/admin/dragons"
