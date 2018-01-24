@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { AuthService } from './auth.service';
 
 @Injectable()
-export class AdminGuard implements CanLoad {
+export class RoleGuard implements CanLoad {
 
   constructor(
     private auth: AuthService,
@@ -24,7 +24,7 @@ export class AdminGuard implements CanLoad {
       this.auth.login(url);
       return false;
     } else {
-      // If user is authenticated but not an admin, redirect to homepage
+      // If user is authenticated but not the expected role, redirect to homepage
       console.log(`You do not have the necessary permissions to access ${url}.`);
       this.router.navigate(['home']);
       return false;

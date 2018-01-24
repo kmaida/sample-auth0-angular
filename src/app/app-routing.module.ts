@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 // Route guards
 import { AuthGuard } from './auth/auth.guard';
-import { AdminGuard } from './auth/admin.guard';
+import { RoleGuard } from './auth/role.guard';
 // Components
 import { HomeComponent } from './pages/home/home.component';
 import { CallbackComponent } from './pages/callback.component';
@@ -36,7 +36,7 @@ const routes: Routes = [
   {
     path: 'admin',
     loadChildren: './pages/admin/admin.module#AdminModule',
-    canLoad: [AdminGuard],
+    canLoad: [RoleGuard],
     data: { role: 'admin' }
   }
 ];
