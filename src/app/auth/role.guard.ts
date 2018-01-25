@@ -12,7 +12,7 @@ export class RoleGuard implements CanLoad {
     private router: Router
   ) { }
 
-  canLoad(route: Route): boolean {
+  canLoad(route: Route): Observable<boolean> | Promise<boolean> | boolean {
     const url = `/${route.path}`;
     const expectedRole = route.data.role;
 
