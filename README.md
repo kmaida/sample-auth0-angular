@@ -4,7 +4,7 @@ Implement [Auth0](https://auth0.com) and secure an Angular application with an a
 
 ## Angular Tutorial
 
-To begin, proceed to **[Auth0 Angular Workshop](https://kmaida.gitbooks.io/auth0-angular-workshop/)** to follow along with the tutorial.
+To begin, proceed to the **[Auth0 Angular Workshop](https://kmaida.gitbooks.io/auth0-angular-workshop/)** book to follow along with the tutorial.
 
 ## Using This Repo
 
@@ -23,9 +23,9 @@ If you want to clone and run this repo, you will need:
 Once you have _all_ the above requirements fulfilled, clone this repo and install its dependencies:
 
 ```bash
-git clone https://github.com/kmaida/sample-auth0-angular.git
-cd sample-auth0-angular
-npm install
+$ git clone https://github.com/kmaida/sample-auth0-angular.git
+$ cd sample-auth0-angular
+$ npm install
 ```
 
 ### Configure Environment
@@ -36,15 +36,24 @@ Next locate `environment.prod.ts.sample` and change its filename to `environment
 
 ### Serve the App
 
-Serve the app by running:
+Serve the app in a development environment by running:
 
 ```bash
-ng serve
+$ ng serve
 ```
 
 The app will be available at [http://localhost:4200](http://localhost:4200).
 
-> **Important:** Make sure you have the [sample-auth0-nodeserver](https://github.com/kmaida/sample-auth0-nodeserver) running to provide API data for the Angular app.
+To serve the app in a production environment, run:
+
+```bash
+$ ng build --prod
+$ node server
+```
+
+The app will then be built to a `/dist` folder and served at [http://localhost:8080](http://localhost:8080).
+
+> **Important:** Make sure you have the [sample-auth0-nodeserver](https://github.com/kmaida/sample-auth0-nodeserver) running to provide API data for the Angular app whenever serving it.
 
 ## License
 
